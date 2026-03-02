@@ -1,3 +1,5 @@
+package Q0011;
+
 public class Solution {
     public int maxArea(int[] height) {
         int len = height.length, left = 0, right = len-1, max = 0;

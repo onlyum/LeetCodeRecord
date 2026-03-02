@@ -1,3 +1,5 @@
+package Q0283;
+
 public class Solution {
     public void moveZeroes(int[] nums) {
         int n = nums.length, l = 0, r = 0, temp = -1;
