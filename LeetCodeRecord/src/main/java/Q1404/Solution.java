@@ -1,4 +1,4 @@
-package org.example;
+package Q1404;
 
 import java.util.Arrays;
 

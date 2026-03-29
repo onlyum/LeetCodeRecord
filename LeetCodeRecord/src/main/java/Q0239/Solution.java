@@ -1,26 +1,33 @@
 package Q0239;
-import java.util.PriorityQueue;
-import java.util.Comparator;
 
-public class Solution {
+import java.util.ArrayDeque;
+import java.util.Deque;
+/*
+单调队列
+* */
+class Solution {
     public int[] maxSlidingWindow(int[] nums, int k) {
+        //双端队列维护单调队列，存储下标
+        Deque<Integer> dq = new ArrayDeque<>();
         int n = nums.length;
-        PriorityQueue<int[]> pq = new PriorityQueue<int[]>(new Comparator<int[]>(){ //k滑动窗口用 优先队列，内部放[数值，下标]
-            public int compare(int[] pair1, int[] pair2){
-                return pair1[0]!=pair2[0]? pair2[0]-pair1[0] : pair2[1] - pair1[1];
-            }
-        });
-        for(int i=0; i<k; i++){
-            pq.offer(new int[]{nums[i], i});
-        }
         int[] res = new int[n-k+1];
-        res[0] = pq.peek()[0];
-        for(int i=k; i<n; i++){
-            pq.offer(new int[]{nums[i], i});
-            while(pq.peek()[1] <= i-k){
-                pq.poll();
+
+        for(int i = 0;i<n;i++){
+            //比新进入元素小的全部删除
+            while(!dq.isEmpty() && nums[dq.peekLast()] <= nums[i]){
+                dq.pollLast();
             }
-            res[i-k+1] = pq.peek()[0];
+            //下标入队尾
+            dq.offerLast(i);
+            //判断队首是否出边界
+            if(dq.peekFirst() <= i - k){
+                dq.pollFirst();
+            }
+            //窗口形成
+            if(i>=k-1){
+                //存队首下标对应数值
+                res[i-(k-1)] = nums[dq.peekFirst()];
+            }
         }
         return res;
     }

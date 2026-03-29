@@ -1,4 +1,4 @@
-package org.example;
+package Q1356;
 
 public class Main {
     public static void main(String[] args) {

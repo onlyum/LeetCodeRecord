@@ -1,3 +1,4 @@
+package Q0033;
 public class Solution {
         public int search(int[] nums, int target) {
             int len = nums.length;

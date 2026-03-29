@@ -1,4 +1,4 @@
-package org.example;
+package Q1022;
 
 class Solution {
     public int sumRootToLeaf(TreeNode root) {

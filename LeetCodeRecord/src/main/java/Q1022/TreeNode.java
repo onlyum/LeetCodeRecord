@@ -1,4 +1,4 @@
-package org.example;
+package Q1022;
 
 public class TreeNode {
     int val;

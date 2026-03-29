@@ -1,4 +1,4 @@
-package org.example;
+package Q0049;
 
 import java.util.Arrays;
 import java.util.HashMap;

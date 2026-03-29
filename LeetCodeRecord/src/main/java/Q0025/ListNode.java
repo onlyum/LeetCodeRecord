@@ -1,3 +1,4 @@
+package Q0025;
 public class ListNode {
     int val;
     ListNode next;
