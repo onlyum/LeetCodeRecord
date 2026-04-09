@@ -1,9 +1,9 @@
-package 网易互娱.网易互娱T2作答;
+package 网易互娱.D20260306.T2.作答;
 
 import java.util.Scanner;
 
 // 注意类名必须为 Main, 不要有任何 package xxx 信息
-public class Main {
+public class T2 {
     static int[] dr = new int[]{-1, 0, 1,  0};//上-1，右0，下1，左 0
     static int[] dc = new int[]{0 , 1, 0, -1};//上 0，右1，下0，左-1
     //组件改方向

@@ -1,10 +1,16 @@
-package 网易互娱.网易互娱T1作答;
+package 网易互娱.D20260306.T1.作答;
 
+import java.io.*;
 import java.util.*;
 
 // 注意类名必须为 Main, 不要有任何 package xxx 信息
-public class Main {
+public class T1 {
     public static void main(String[] args) {
+        //加速输入输出
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        PrintWriter out = new PrintWriter(new BufferedWriter(new OutputStreamWriter(System.out)));
+
+
         Scanner in = new Scanner(System.in);
         int n = in.nextInt();//玩家人数
         int[] p = new int[n];//出生点
