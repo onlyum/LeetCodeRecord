@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class test {
+public class 手撕linux路径问题 {
     // /root/abc/.././ffdc/../cd
     public static void Main(String args){
         String s = "/root/abc/.././ffdc/../cd";

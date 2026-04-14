@@ -1,5 +1,3 @@
-package Q0160;
-
 public class ListNode {
     int val;
     ListNode next;

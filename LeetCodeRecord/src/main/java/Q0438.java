@@ -1,9 +1,16 @@
-package Q0438;
+/*
+438. 找到字符串中所有字母异位词
+ */
+
 import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.List;
-public class Solution {
-    public List<Integer> findAnagrams(String s, String p) {
+public class Q0438 {
+    public static void main(String[] args) {
+        String s = "baa", p = "aa";
+        System.out.println(findAnagrams(s, p));
+    }
+    public static List<Integer> findAnagrams(String s, String p) {
         if(s.length() < p.length()){
             return new ArrayList<>();
         }

@@ -1,7 +1,9 @@
-package Q0041;
-
-public class Solution {
-    public int firstMissingPositive(int[] nums) {
+public class Q0041 {
+    public static void main(String args[]){
+        int[] nums = {3,4,-1,1};
+        System.out.println(firstMissingPositive(nums));
+    }
+    public static int firstMissingPositive(int[] nums) {
         //  结果必在[1, n+1]中
         //  首先，讨论[1,n]
         //  1、所有负值都置为n+1,则全为正整数
