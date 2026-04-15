@@ -9,7 +9,7 @@ public class Q0234 {
         List<Integer> list = new ArrayList<>();
         while(head!=null){
             list.add(head.val);
-            head=head.next;
+            head = head.next;
         }
 
         int len = list.size();
