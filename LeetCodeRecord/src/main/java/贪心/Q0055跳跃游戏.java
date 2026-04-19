@@ -1,9 +1,9 @@
-/*
+package 贪心;/*
 55.跳跃游戏
  */
 
 
-public class Q0055 {
+public class Q0055跳跃游戏 {
     public static void main(String[] args){
         int[] input = {7,1,5,3,6,4};
         System.out.println(canJump(input));

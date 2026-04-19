@@ -1,4 +1,6 @@
-public class Q0045 {
+package 贪心;
+
+public class Q0045跳跃游戏二 {
     public static void main(String[] args){
         int[] input = {7,1,5,3,6,4};
         System.out.println(jump(input));
