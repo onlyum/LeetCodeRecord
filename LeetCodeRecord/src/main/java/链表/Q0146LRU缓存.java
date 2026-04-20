@@ -1,4 +1,4 @@
-/*
+package 链表;/*
 LRU缓存
 主要为两个基类函数：
 1、删除当前节点的   removeNode

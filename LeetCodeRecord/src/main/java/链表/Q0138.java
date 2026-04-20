@@ -1,20 +1,22 @@
+package 链表;
+
 import java.util.Map;
 import java.util.HashMap;
 /*
 138.随即链表的复制
  */
 //hash存储（旧节点， 新节点）
-//public class Q0138 {
+//public class 链表.Q0138 {
 //    public static void main(String[] args){
 //        int[] in = {1,2,3,4,5};
-//        ListNode.printList(copyRandomList(ListNode.createLinkedList(in)));
+//        链表.ListNode.printList(copyRandomList(链表.ListNode.createLinkedList(in)));
 //    }
-//    public static ListNode copyRandomList(ListNode head) {
-//        Map<ListNode, ListNode> map = new HashMap<ListNode, ListNode>();
-//        for(ListNode p = head; p != null; p = p.next){
-//            map.put(p, new ListNode(p.val));
+//    public static 链表.ListNode copyRandomList(链表.ListNode head) {
+//        Map<链表.ListNode, 链表.ListNode> map = new HashMap<链表.ListNode, 链表.ListNode>();
+//        for(链表.ListNode p = head; p != null; p = p.next){
+//            map.put(p, new 链表.ListNode(p.val));
 //        }
-//        for(ListNode p = head; p != null; p = p.next){
+//        for(链表.ListNode p = head; p != null; p = p.next){
 //            map.get(p).next = map.get(p.next);
 //            map.get(p).random = map.get(p.random);
 //        }

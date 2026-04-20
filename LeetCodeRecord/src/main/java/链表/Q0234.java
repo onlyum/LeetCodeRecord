@@ -1,3 +1,5 @@
+package 链表;
+
 import java.util.ArrayList;
 import java.util.List;
 

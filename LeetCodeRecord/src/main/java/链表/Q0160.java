@@ -1,3 +1,5 @@
+package 链表;
+
 /*
 160. 相交链表
  */
@@ -9,8 +11,8 @@
 //            System.out.println("i = " + i);
 //        }
 //    }
-//    public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
-//        ListNode pA = headA, pB = headB;
+//    public 链表.ListNode getIntersectionNode(链表.ListNode headA, 链表.ListNode headB) {
+//        链表.ListNode pA = headA, pB = headB;
 //        while(pA!=pB){
 //            pA = (pA==null?headB:pA.next);
 //            pB = (pB==null?headA:pB.next);

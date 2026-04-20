@@ -1,4 +1,4 @@
-/*
+package 链表;/*
 23.合并k个升序链表
  */
 
@@ -26,7 +26,7 @@ public class Q0023合并K个升序链表 {
     }
 
     //返回两个链表合并的结果
-    public static ListNode mergeTwoLists(ListNode l1,ListNode l2){
+    public static ListNode mergeTwoLists(ListNode l1, ListNode l2){
         ListNode dummy = new ListNode(-1);
         ListNode cur = dummy;
         while(l1!=null&&l2!=null){

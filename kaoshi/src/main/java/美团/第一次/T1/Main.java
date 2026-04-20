@@ -37,10 +37,10 @@ public class Main {
         int a = in.nextInt();
         int b = in.nextInt();
 
-        System.out.println(Solution(a, b));
+        System.out.println(动态规划.Solution(a, b));
 
     }
-    public static int Solution(int left, int right) {
+    public static int 动态规划.Solution(int left, int right) {
         int res = 0;
         for (int i = left; i <= right; i++) {
             if (ifSingle(i)) {

@@ -1,6 +1,6 @@
 //package Q0053;
 //
-//public class Solution {
+//public class 动态规划.Solution {
 //    // 给你一个整数数组 nums ，请你找出一个具有最大和的连续子数组（子数组最少包含一个元素），返回其最大和。
 //    public int maxSubArray(int[] nums) {
 //        int[] dp = new int[nums.length];

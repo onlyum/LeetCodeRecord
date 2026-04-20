@@ -1,3 +1,5 @@
+package 链表;
+
 public class Q0002 {
     public static void main(String[] args) {
         ListNode l1 = ListNode.createLinkedList(new int[]{9, 9, 9, 9, 9, 9, 9});
