@@ -1,11 +1,9 @@
-/*
+package 技巧;/*
 287. Find the Duplicate Number
  */
 
-import java.util.Arrays;
-
 //20260413
-public class Q0287 {
+public class Q0287寻找重复数 {
     public static void main(String[] args){
         int[] nums = {1,3,4,2,2};
         int output = findDuplicate(nums);

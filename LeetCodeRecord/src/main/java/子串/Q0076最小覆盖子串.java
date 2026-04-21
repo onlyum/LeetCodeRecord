@@ -1,7 +1,9 @@
+package 子串;
+
 import java.util.HashMap;
 import java.util.Map;
 
-class Q0076 {
+class Q0076最小覆盖子串 {
     public static void main(String[] args) {
         String res = minWindow("a", "a");
         System.out.println(res);

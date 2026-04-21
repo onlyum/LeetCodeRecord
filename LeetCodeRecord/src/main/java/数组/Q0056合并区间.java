@@ -1,9 +1,9 @@
-//import java.util.Arrays;
+package 数组;//import java.util.Arrays;
 //import java.util.ArrayList;
 //import java.util.List;
 //import java.util.Comparator;
 //
-//public class Q0056 {
+//public class 数组.Q0056 {
 //    public int[][] merge(int[][] intervals) {
 //        if(intervals.length == 0)   return new int[0][2];
 //        Arrays.sort(intervals, new Comparator<int[]>(){     //按左边界大小顺序排列
@@ -30,7 +30,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Comparator;
 
-public class Q0056 {
+public class Q0056合并区间 {
     public static void main(String[] args){
         int[][] in = {{1,3},{2,6},{8,10},{15,18}};
         int[][] out = merge(in);

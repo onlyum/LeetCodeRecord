@@ -1,4 +1,6 @@
-public class Q0041 {
+package 数组;
+
+public class Q0041缺失的第一个正数 {
     public static void main(String args[]){
         int[] nums = {3,4,-1,1};
         System.out.println(firstMissingPositive(nums));

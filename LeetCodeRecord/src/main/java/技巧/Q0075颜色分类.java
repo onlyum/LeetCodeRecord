@@ -1,9 +1,9 @@
-/*
+package 技巧;/*
 75.Sort Colors
  */
 
 //20260413
-public class Q0075 {
+public class Q0075颜色分类 {
     public static void main(String[] args){
         int[] in = {2,0,1};
         sortColors(in);

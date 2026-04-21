@@ -1,10 +1,10 @@
-/*
+package 技巧;/*
 ## **摩尔投票算法 (Boyer-Moore Voting Algorithm)**。
 
 它的核心逻辑非常霸气，可以总结为一句话：**“不同的数同归于尽，最后活下来的就是多数元素。”**
  */
 //一刷
-//class Q0169 {
+//class 技巧.Q0169 {
 //    public int majorityElement(int[] nums){
 //        int candidate = 0;
 //        int count = 0;
@@ -23,7 +23,7 @@
 //}
 
 //20260413
-class Q0169 {
+class Q0169多数元素 {
     public static void main(String[] args){
         int[] in = {2, 3, 4, 1, 2, 1, 1, 1, 1, 5};
         System.out.println(majorityElement(in));

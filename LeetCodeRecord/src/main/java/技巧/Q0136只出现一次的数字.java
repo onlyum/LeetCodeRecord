@@ -1,5 +1,7 @@
+package 技巧;
+
 //20260413
-public class Q0136 {
+public class Q0136只出现一次的数字 {
     public static void main(String[] args){
         int[] in = {4,1,2,1,2};
         System.out.print(singleNumber(in));

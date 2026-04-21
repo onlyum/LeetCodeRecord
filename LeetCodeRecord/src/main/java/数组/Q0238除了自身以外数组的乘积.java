@@ -1,10 +1,10 @@
-/*
+package 数组;/*
 238. Product of Array Except Self
  */
 
 //import java.util.Arrays;
 //
-//public class Q0238 {
+//public class 数组.Q0238 {
 //    public static void main(String[] args){
 //        int[] nums = {1,2,3,4};
 //        int[] output = productExceptSelf(nums);
@@ -33,7 +33,7 @@
 //20260413
 import java.util.Arrays;
 
-public class Q0238 {
+public class Q0238除了自身以外数组的乘积 {
     public static void main(String[] args){
         int[] nums = {-1,1,0,-3,3};
         int[] output = productExceptSelf(nums);

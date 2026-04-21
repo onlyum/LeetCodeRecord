@@ -1,13 +1,13 @@
-/*
+package 子串;/*
 560. 和为 K 的子数组
  */
 
 //import java.util.HashMap;
 //import java.util.Map;
 //
-//class Q0560 {
+//class 子串.Q0560 {
 //    public static void main(String[] args){
-//        Q0560 sol = new Q0560();
+//        子串.Q0560 sol = new 子串.Q0560();
 //        int[] input = new int[]{1,1,1};
 //        System.out.println(sol.subarraySum(input, 2));
 //    }
@@ -36,7 +36,7 @@
 import java.util.HashMap;
 import java.util.Map;
 
-class Q0560 {
+class Q0560和为K的子数组 {
     public static void main(String[] args){
         int[] input = new int[]{1,1,1};
         System.out.println(subarraySum(input, 2));

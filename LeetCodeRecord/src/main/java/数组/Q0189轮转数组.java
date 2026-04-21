@@ -1,4 +1,4 @@
-/*
+package 数组;/*
 189.Rotate Array
  */
 
@@ -22,7 +22,7 @@
 import java.util.Arrays;
 
 //20260413
-class Q0189 {
+class Q0189轮转数组 {
     public static void main(String[] args){
         int[] in = {1,2,3,4,5,6,7};
         int k = 3;

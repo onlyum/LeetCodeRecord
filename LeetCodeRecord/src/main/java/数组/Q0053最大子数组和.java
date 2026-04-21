@@ -1,4 +1,4 @@
-//package Q0053;
+package 数组;//package 数组.Q0053;
 //
 //public class 动态规划.Solution {
 //    // 给你一个整数数组 nums ，请你找出一个具有最大和的连续子数组（子数组最少包含一个元素），返回其最大和。
@@ -16,7 +16,7 @@
 //
 
 //20260413
-public class Q0053 {
+public class Q0053最大子数组和 {
     public static void main(String[] args){
         int[] in  = {1,2,-1,-2,2,1,-2,1,4,-5,4};
         System.out.println(maxSubArray(in));

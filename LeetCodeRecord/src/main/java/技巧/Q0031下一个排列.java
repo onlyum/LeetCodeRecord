@@ -1,6 +1,8 @@
+package 技巧;
+
 import java.util.Arrays;
 //20260413
-public class Q0031 {
+public class Q0031下一个排列 {
     public static void main(String[] args){
         int[] in = {1,3,2};
         nextPermutation(in);

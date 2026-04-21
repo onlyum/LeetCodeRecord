@@ -1,3 +1,5 @@
+package 子串;
+
 import java.util.Comparator;
 import java.util.PriorityQueue;
 import java.util.Queue;
@@ -5,7 +7,7 @@ import java.util.Queue;
 /*
 239. 滑动窗口最大值
  */
-public class Q0239 {
+public class Q0239滑动窗口最大值 {
     public static void main(String[] args) {
         int[] nums = {3,1,1,3};
         int k = 3;
