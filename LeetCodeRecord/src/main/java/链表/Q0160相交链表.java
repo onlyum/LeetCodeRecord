@@ -20,7 +20,7 @@ package 链表;
 //        return pA;
 //    }
 //}
-public class Q0160 {
+public class Q0160相交链表 {
     public static void main(String[] args) {
         for (int i = 1; i <= 5; i++) {
             //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint

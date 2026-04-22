@@ -3,7 +3,7 @@ package 链表;
 /*
 24. 两两交换链表中的节点
  */
-public class Q0024 {
+public class Q0024两两交换链表中的节点 {
     public static void main(String[] args){
         int[] in = {1,2,3,4,5};
         ListNode.printList(swapPairs(ListNode.createLinkedList(in)));

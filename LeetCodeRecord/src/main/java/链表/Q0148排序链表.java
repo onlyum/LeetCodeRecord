@@ -9,7 +9,7 @@ import java.util.Queue;
  */
 
 //优先队列自动排序
-public class Q0148 {
+public class Q0148排序链表 {
     public static void main(String[] args){
         int[] in = {4,2,1,3};
         ListNode.printList(sortList(ListNode.createLinkedList(in)));

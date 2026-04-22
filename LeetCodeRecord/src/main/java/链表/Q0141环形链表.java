@@ -3,7 +3,7 @@ package 链表;
 /*
 141.环形链表
  */
-public class Q0141 {
+public class Q0141环形链表 {
     public boolean hasCycle(ListNode head) {
         //快慢指针,有环则不为NULL
         ListNode slow = head, fast = head;

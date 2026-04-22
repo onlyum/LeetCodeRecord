@@ -3,7 +3,7 @@ package 链表;/*
  */
 
 //间隔k-1个节点进行遍历
-public class Q0025 {
+public class Q0025K个一组翻转链表 {
     public static void main(String[] args){
         int[] in = {1,2,3,4,5};
         ListNode.printList(reverseKGroup(ListNode.createLinkedList(in), 3));

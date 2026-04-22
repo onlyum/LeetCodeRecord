@@ -8,7 +8,7 @@ public class Q0739每日温度 {
         int[] temperatures = {73,74,75,71,69,72,76,73};
     }
     public int[] dailyTemperatures(int[] temperatures) {
-        Deque<Integer> stack = new ArrayDeque<>();
+        Deque<Integer> stack = new ArrayDeque<>();//单减栈
         int[] result = new int[temperatures.length];
         for(int i = 0; i < temperatures.length; i++) {
             int t = temperatures[i];

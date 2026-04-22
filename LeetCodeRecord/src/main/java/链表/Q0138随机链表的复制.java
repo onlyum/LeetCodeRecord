@@ -24,7 +24,7 @@ import java.util.HashMap;
 //    }
 //}
 
-public class Q0138 {
+public class Q0138随机链表的复制 {
     public static void main(String[] args){
         int[] in = {1,2,3,4,5};
         ListNode.printList(copyRandomList(ListNode.createLinkedList(in)));

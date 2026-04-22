@@ -6,7 +6,7 @@ import java.util.List;
 /*
 234.回文链表
  */
-public class Q0234 {
+public class Q0234回文链表 {
     public boolean isPalindrome(ListNode head) {
         List<Integer> list = new ArrayList<>();
         while(head!=null){

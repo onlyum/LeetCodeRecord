@@ -3,7 +3,7 @@ package 链表;
 /*
 206. 反转链表
  */
-public class Q0206 {
+public class Q0206反转链表 {
     public ListNode reverseList(ListNode head) {
         ListNode pre=null;
         ListNode cur=head;

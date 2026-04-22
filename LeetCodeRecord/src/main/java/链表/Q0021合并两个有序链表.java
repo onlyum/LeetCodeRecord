@@ -1,6 +1,6 @@
 package 链表;
 
-public class Q0021 {
+public class Q0021合并两个有序链表 {
     public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
         ListNode head = new ListNode(0);
         ListNode cur = head;

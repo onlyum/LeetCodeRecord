@@ -3,7 +3,7 @@ package 链表;/*
  */
 
 //间隔k个节点进行遍历
-public class Q0019 {
+public class Q0019删除链表的倒数第N个节点 {
     public static void main(String[] args){
         int[] in = {1,2,3,4,5};
         ListNode.printList(removeNthFromEnd(ListNode.createLinkedList(in), 2));

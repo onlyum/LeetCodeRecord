@@ -1,6 +1,6 @@
 package 链表;
 
-public class Q0002 {
+public class Q0002两数相加 {
     public static void main(String[] args) {
         ListNode l1 = ListNode.createLinkedList(new int[]{9, 9, 9, 9, 9, 9, 9});
         ListNode l2 = ListNode.createLinkedList(new int[]{9, 9, 9, 9});
