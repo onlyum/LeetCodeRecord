@@ -17,6 +17,7 @@ public class Q0017电话号码的组合 {
         return ans;
     }
     static void DFS(List<String> ans,String digits, int index, StringBuilder curPath){
+        //中止条件：找完这个字符串就添加到结果,index为当前字符串长度
         if(curPath.length() == digits.length()){
             ans.add(curPath.toString());
             return;
