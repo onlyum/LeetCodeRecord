@@ -1,9 +1,10 @@
-package Q0015;
-import java.util.List;
-import java.util.Arrays;
-import java.util.ArrayList;
+package 双指针;
 
-public class Solution {
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+public class Q0015三数之和 {
     public List<List<Integer>> threeSum(int[] nums) {
         Arrays.sort(nums);
         List<List<Integer>> res = new ArrayList<>();

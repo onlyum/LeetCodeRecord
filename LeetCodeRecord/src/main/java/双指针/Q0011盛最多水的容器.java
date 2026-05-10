@@ -1,6 +1,6 @@
-package Q0011;
+package 双指针;
 
-public class Solution {
+public class Q0011盛最多水的容器 {
     public int maxArea(int[] height) {
         int len = height.length, left = 0, right = len-1, max = 0;
         while(left < right){

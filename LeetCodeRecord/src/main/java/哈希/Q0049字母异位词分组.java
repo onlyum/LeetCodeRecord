@@ -1,12 +1,8 @@
-package Q0049;
+package 哈希;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.List;
-import java.util.ArrayList;
+import java.util.*;
 
-class Solution {
+public class Q0049字母异位词分组 {
     public List<List<String>> groupAnagrams(String[] strs) {
         Map<String, List<String>> map = new HashMap<String, List<String>>();
         for(String str : strs){
