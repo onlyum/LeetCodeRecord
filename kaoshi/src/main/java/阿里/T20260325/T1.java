@@ -3,9 +3,11 @@ package 阿里.T20260325;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.sql.DriverManager;
 import java.util.StringTokenizer;
 
-/*
+/**
 题目描述
 【阿里】2026-3-25-第一题-圣诞老人分糖果
 
@@ -40,39 +42,49 @@ import java.util.StringTokenizer;
 6 8
 0 0
 2 3
-* */
+
+# 解题思路
+1. 对于单种糖果分配：每个小朋友的基础获取量为 `c_i / k`。余下的糖果数量为 `c_i % k`，这部分需要分配给不同的 `c_i % k` 个小朋友（每人1个）。
+2. 因为余数 `c_i % k` 永远严格小于 `k`，这就意味着在分配额外那1个糖果时，永远有小朋友分不到。
+3. 如果要求单人获取的最小值：我们可以在每种糖果分配时，都不把余数的1个糖果给他。因此 `最小值 = sum(c_i / k)`。
+4. 如果要求单人获取的最大值：只要有余数，我们就优先把多出的1个分给他。因此 `最大值 = sum(c_i / k) + (有多少种糖果满足 c_i % k > 0)`。
+5. 结果累加可能会超出 int 范围，需要使用 long 类型。
+**/
 public class T1 {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        PrintWriter pw = new PrintWriter(System.out);
         StringTokenizer st = new StringTokenizer(br.readLine());
 
         if(!st.hasMoreTokens())  return;
         int T = Integer.parseInt(st.nextToken());
+        
+        while (T-- > 0) {
+            st = new StringTokenizer(br.readLine());
+            int n = Integer.parseInt(st.nextToken());
+            long k = Long.parseLong(st.nextToken());
 
-        StringBuffer sb = new StringBuffer();
+            long minCandies = 0;
+            long maxCandies = 0;
 
-        while(T-->0){
-            StringTokenizer st1 = new StringTokenizer(br.readLine());
-            int n = Integer.parseInt(st1.nextToken());
-            int k = Integer.parseInt(st1.nextToken());
-
-            long minTotal = 0;//最少
-            long maxTotal = 0;//最多
-
-            StringTokenizer st2 = new StringTokenizer(br.readLine());
-            for(int i =0;i<n;i++){
-                int c = Integer.parseInt(st2.nextToken());
-
-                long base = (long) c/k;//每人基础分的
-                long rem = c%k;//多出来的
-
-                minTotal += base;
-                maxTotal += (rem > 0)?(base+1):base;
+            st = new StringTokenizer(br.readLine());
+            for (int i = 0; i < n; i++) {
+                long c = Long.parseLong(st.nextToken());
+                // 计算保底数量和余数
+                long base = c / k;
+                long rem = c % k;
+                // 最小值：只能拿到保底的糖果
+                minCandies += base;
+                // 最大值：如果该种糖果除以人数有余数，就可以让他多拿1个
+                maxCandies += base + (rem > 0 ? 1 : 0);
             }
 
-            sb.append(minTotal).append(" ").append(maxTotal).append("\n");
+            // 输出当前测试用例的结果
+            pw.println(minCandies + " " + maxCandies);
         }
 
-        System.out.print(sb);
+        // 刷新输出流
+        pw.flush();
+        pw.close();
     }
 }

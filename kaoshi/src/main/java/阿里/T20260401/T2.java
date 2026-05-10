@@ -1,10 +1,20 @@
 package 阿里.T20260401;
 /*
 【阿里研发岗】2026-4-1-第二题-约束差值数组
-
-题目描述
-在幻光实验室中，Alice 需要构造一个长度为 n 的正整数数组 a ，其中每个元素 a_i > 0。但她手中有 m 条魔法约束，每条约束给出三元组 (i, j, k)，要求 a_i - a_j = k。请你判断是否存在满足所有约束且 1 <= a_i <= 10^18 的数组 a。若存在则输出任意一个符合条件的数组；否则输出 -1。
-
+* 【题目简介】
+ * Alice 需要构造一个长度为 n 的正整数数组 a，满足 a_i > 0。
+ * 给定 m 条约束 (i, j, k)，要求满足 a_i - a_j = k，且 1 <= a_i <= 10^18。
+ * 若存在则输出该数组，否则输出 -1。
+ *
+ * 【解题思路】
+ * 1. 建图：将 a_i - a_j = k 转化为从 j 到 i 的一条权值为 k 的有向边，
+ *    以及从 i 到 j 的一条权值为 -k 的有向边。
+ * 2. 遍历连通块验证冲突：对未访问的节点赋初始值 0 并进行 BFS 遍历。
+ *    通过 a_next = a_curr + weight 传递推导，若遇到已访问的节点，
+ *    校验推算值和其现有值是否相等。如果不等，说明存在矛盾，返回 -1。
+ * 3. 数组平移：由于题意要求所有 a_i >= 1，我们对每个连通块找出最小值 min_val，
+ *    将该连通块的所有元素整体加上 (1 - min_val)。这样该连通块内的最小值刚好等于 1，
+ *    既满足了相对差值，也满足了正数范围。题目极值 2*10^11 远小于 10^18 上限。
 输入描述
 每个测试文件均包含多组测试数据。第一行输入一个整数 T(1 <= T <= 10^5) 代表测试组数，每组测试数据描述如下：
 第一行输入两个整数 n, m(1 <= n, m <= 2 * 10^5)。
@@ -31,115 +41,120 @@ package 阿里.T20260401;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.StringTokenizer;
+import java.io.PrintWriter;
+import java.util.*;
 
 public class T2 {
-    //理解：
-    //档案柜：有2*m个抽屉，每个抽屉中若干档案
-    //每个edgeCount当作一个档案，有[to, weight]作为档案内容，nxt作同抽屉中检索用
-    //head就是档案柜的所有抽屉面板显示的编号
+    static class Edge {
+        int to;
+        long weight;
 
-    // --- 链式前向星建图相关参数 ---
-    // head 数组部分初始化为 -1
-    static int[] head = new int[500005];
-    // m 的总和不超过 5*10^5，因为我们建的是双向边（u->v 和 v->u），所以边的数量最多是 1000000
-    static int[] to = new int[1000005];    // to[e] 档案内容：编号为 e 的边指向的终点节点
-    static long[] weight = new long[1000005]; // weight[e] 档案内容：编号为 e 的边的权重（即题目中的差值 k）
-    static int[] nxt = new int[1000005];   // nxt[e] 抽屉内部索引：与编号为 e 的边“同起点”的上一条边的编号
-    static int edgeCount = 0;              // edgeCount 档案全局索引：是全局边的计数器，同时也作为每一条新边的“编号 ID”
-    // --- BFS 遍历及业务逻辑相关参数 ---
-    static long[] val = new long[500005];  // val[i] 记录推算出来的节点 i 的相对值（即 a_i 的值）
-    static boolean[] visited = new boolean[500005]; // visited[i] 标记节点 i 是否在 BFS 中被访问过
-    static int[] comp = new int[500005];   // comp 相当于一个手写的队列（或者叫数组列表），用来临时存放在同一个连通块里的所有节点，方便后续统一调整数值
-
-    //链式前向星加边
-    static void addEdge(int u,int v,long w){
-        // 1. 记录档案内容
-        weight[edgeCount] = w;
-        to[edgeCount] = v;
-        // 2. 头插法建柜内索引
-        nxt[edgeCount] = head[u];
-        // 3. 更新抽屉面板编号
-        head[u] = edgeCount++;
+        Edge(int to, long weight) {
+            this.to = to;
+            this.weight = weight;
+        }
     }
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer st = new StringTokenizer(br.readLine());
+        PrintWriter pw = new PrintWriter(System.out);
 
-        if(!st.hasMoreTokens()) return;
+        StringTokenizer st = new StringTokenizer(br.readLine());
+        if (!st.hasMoreTokens()) return;
         int T = Integer.parseInt(st.nextToken());
 
-        while(T-->0){
+        while (T-- > 0) {
             st = new StringTokenizer(br.readLine());
             int n = Integer.parseInt(st.nextToken());
             int m = Integer.parseInt(st.nextToken());
-            //初始化
-            for(int i=1;i<=n;i++){
-                head[i] = -1;
-                visited[i] = false;
+
+            // 建立邻接表
+            List<Edge>[] graph = new ArrayList[n + 1];
+            for (int i = 1; i <= n; i++) {
+                graph[i] = new ArrayList<>();
             }
 
-            edgeCount = 0;
-            for(int i=0;i<m;i++){
+            int count = 0;
+            int totalParams = m * 3;
+            long[] inputs = new long[totalParams];
+
+            // 按照指定的格式，循环读取 m*3 个参数（适配换行或同行空格分隔的输入）
+            while (count < totalParams) {
                 st = new StringTokenizer(br.readLine());
-                int u = Integer.parseInt(st.nextToken());
-                int v = Integer.parseInt(st.nextToken());
-                long w = Integer.parseInt(st.nextToken());
-
-                //双向图
-                addEdge(u, v, w);
-                addEdge(v, u, -w);
+                inputs[count++] = Long.parseLong(st.nextToken());
             }
 
-            boolean possible = true;
-            //遍历所有节点处理
+            // 解析约束并建图
+            for (int i = 0; i < m; i++) {
+                int u = (int) inputs[i * 3];     // i
+                int v = (int) inputs[i * 3 + 1]; // j
+                long w = inputs[i * 3 + 2];      // k
+                // a_u - a_v = w  =>  a_u = a_v + w
+                graph[v].add(new Edge(u, w));
+                graph[u].add(new Edge(v, -w));
+            }
+
+            long[] ans = new long[n + 1];
+            boolean[] visited = new boolean[n + 1];
+            boolean isPossible = true;
+
+            // 遍历所有的点，处理每个不连通的子图
             for (int i = 1; i <= n; i++) {
                 if (!visited[i]) {
-                    int compSize = 0;
-                    comp[compSize++] = i;// 把起点 i 塞进队列
-                    val[i] = 0; // 极其关键：起点的绝对值是多少不重要，先假设它是 0
+                    List<Integer> component = new ArrayList<>();
+                    Queue<Integer> queue = new ArrayDeque<>();
+
+                    ans[i] = 0;
                     visited[i] = true;
-                    long minVal = 0;// 最小相对值初始为 0，记录“当前连通块”中推算出的最小的 val 值
+                    queue.offer(i);
+                    component.add(i);
 
-                    // BFS 遍历连通块
-                    int headPtr = 0;
-                    while (headPtr < compSize) {
-                        int curr = comp[headPtr++];// 经典手写队列：出队
+                    long minVal = 0; // 记录当前连通块的最小值
 
-                        for (int e = head[curr]; e != -1; e = nxt[e]) {
-                            int nextNode = to[e];
-                            long w = weight[e];
+                    while (!queue.isEmpty()) {
+                        int curr = queue.poll();
+                        for (Edge edge : graph[curr]) {
+                            int next = edge.to;
+                            long weight = edge.weight;
 
-                            if (!visited[nextNode]) {
-                                // 还没访问过：计算它的相对值 = 当前节点的值 + 边的权重
-                                visited[nextNode] = true;
-                                val[nextNode] = val[curr] + w;
-                                minVal = Math.min(minVal, val[nextNode]);// 顺手记录连通块里的最小值
-                                comp[compSize++] = nextNode;// 入队
+                            if (!visited[next]) {
+                                visited[next] = true;
+                                ans[next] = ans[curr] + weight;
+                                minVal = Math.min(minVal, ans[next]);
+                                queue.offer(next);
+                                component.add(next);
                             } else {
-                                // 【核心矛盾检测】：如果这个邻居以前被访问过，说明有环！
-                                // 此时它早就被赋过值了。我们要检查：从别的路算出来的它的值，和从当前 curr 算过去的值，一样吗？
-                                if (val[nextNode] != val[curr] + w) {
-                                    possible = false; // 不一样！Alice 被骗了，存在自相矛盾的约束
-                                    break;
+                                // 已经访问过的点，校验数值冲突
+                                if (ans[next] != ans[curr] + weight) {
+                                    isPossible = false;
                                 }
                             }
                         }
-                        if (!possible) break;
                     }
 
-                    if (!possible) break;
+                    if (!isPossible) {
+                        break;
+                    }
 
-                    // 整体拔高当前连通块，使其最小值为1，保证全部为正整数
-                    long shift = 1 - minVal;
-                    for (int j = 0; j < compSize; j++) {
-                        val[comp[j]] += shift;
+                    // 将当前连通块做平移：使得最小值为 1
+                    long offset = 1 - minVal;
+                    for (int node : component) {
+                        ans[node] += offset;
                     }
                 }
             }
 
+            // 输出结果
+            if (isPossible) {
+                for (int i = 1; i <= n; i++) {
+                    pw.print(ans[i] + (i == n ? "" : " "));
+                }
+                pw.println();
+            } else {
+                pw.println("-1");
+            }
         }
-
+        // 记得刷新输出流
+        pw.flush();
     }
 }
