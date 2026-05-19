@@ -56,13 +56,14 @@ public class T2 {
             graph[v][u] = Math.min(graph[v][u], w);
         }
         /**
+         * 求两节点间最短距离
          Floyd-Warshall算法
          Floyd 是一个严格的动态规划算法，k层依赖k-1层
          */
         for(int k=0;k<n;k++){
             for(int i=0;i<n;i++){
                 for(int j=0;j<n;j++){
-                    if(graph[i][k]!=INF &&  graph[k][j]!=INF){
+                    if(graph[i][k]!=INF && graph[k][j]!=INF){
                         graph[i][j] = Math.min(graph[i][j], graph[i][k]+graph[k][j]);
                     }
                 }
