@@ -1,4 +1,4 @@
-package Q0128;
+package 哈希.Q0128;
 
 import java.util.Arrays;
 import java.util.Set;

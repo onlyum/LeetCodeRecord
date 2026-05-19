@@ -1,4 +1,4 @@
-package Q1022;
+package Q1022从根到叶的二进制数之和;
 
 class Solution {
     public int sumRootToLeaf(TreeNode root) {

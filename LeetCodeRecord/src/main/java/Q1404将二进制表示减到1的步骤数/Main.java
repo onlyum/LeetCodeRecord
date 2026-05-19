@@ -1,13 +1,11 @@
-package Q0128;
-
-import java.util.Arrays;
+package Q1404将二进制表示减到1的步骤数;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        int[] input = new int[]{1,0,1,2};
         Solution sol = new Solution();
-        System.out.println(sol.longestConsecutive(input));
+        String input = "1101";
+        System.out.print(sol.numSteps(input));
     }
 }

@@ -1,4 +1,4 @@
-package Q1356;
+package Q1356根据数字二进制下1的数目排序;
 
 public class Main {
     public static void main(String[] args) {

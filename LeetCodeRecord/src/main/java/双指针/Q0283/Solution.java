@@ -1,4 +1,4 @@
-package Q0283;
+package 双指针.Q0283;
 
 public class Solution {
     public void moveZeroes(int[] nums) {

@@ -1,6 +1,4 @@
-package Q1404;
-
-import java.util.Arrays;
+package Q1404将二进制表示减到1的步骤数;
 
 class Solution {
     public int numSteps(String s) {
