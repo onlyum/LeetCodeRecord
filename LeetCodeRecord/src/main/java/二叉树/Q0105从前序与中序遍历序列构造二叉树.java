@@ -6,8 +6,8 @@ import java.util.Map;
 
 public class Q0105从前序与中序遍历序列构造二叉树 {
     public static void main(String[] args){
-        int[] preorder = new int[]{3,9,20,15,7};
-        int[] inorder = new int[]{9,3,15,20,7};
+        int[] preorder = new int[]{1 ,2 ,3 ,4 ,5 ,6};
+        int[] inorder = new int[]{2 ,1 ,3 ,5 ,4 ,6};
         Q0105从前序与中序遍历序列构造二叉树 sol = new Q0105从前序与中序遍历序列构造二叉树();
         TreeNode.printTree(sol.buildTree(preorder, inorder));
     }
