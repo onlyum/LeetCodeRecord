@@ -1,0 +1,15 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug C++ (CodeLLDB)",
+            "program": "${workspaceFolder}\\.cpp-out\\run.exe",
+            "args": [],
+            "cwd": "${fileDirname}",
+            "terminal": "integrated",
+            "preLaunchTask": "build cpp file"
+        }
+    ]
+}

@@ -1,0 +1,5 @@
+
+# C++ local build output
+.cpp-out/
+*.exe
+
