@@ -11,24 +11,43 @@ using namespace std;
 
 class Solution {
 public:
-    int func(string s) {
-        vector<int> last(256,-1);
-        int left = 0;
-        int res = 0;
-        for (int right = 0; right < s.size(); ++right) {
-            char c = s[right];
-            if (last[c] >= left) {
-                left = last[c] + 1;
-            }
-            last[c] = right;
-            res = max(res, right - left + 1);
+    vector<int> findAnagrams(string s,string p) {
+        if (s.length() < p.length()) {return {};}
+        vector<int> s_cnt(256,-1);
+        vector<int> p_cnt(256,-1);
+        vector<int> res;
+        for (int i = 0; i < p.length(); i++) {
+            p_cnt[p[i]-'a']++;
+            s_cnt[p[i]-'a']++;
+        }
+
+        if (p_cnt==s_cnt) {res.push_back(0);}
+
+        for (int right = p.length(); right < s.length(); ++right) {
+            s_cnt[s[right]-'a']++;
+            s_cnt[s[right-p.length()]-'a']--;
+            if (p_cnt==s_cnt) {res.push_back(right-p.length()+1);}
         }
         return res;
     }
 };
 
 int main() {
-    string s = "abcabcbb";
-    int res = Solution().func(s);
-    cout << res << endl;
+    Solution solution;
+
+    // 测试用例 1
+    std::string s1 = "cbaebabacd";
+    std::string p1 = "abc";
+    std::vector<int> res1 = solution.findAnagrams(s1, p1);
+    std::cout << "示例 1 输出: ";
+    std::copy(res1.begin(), res1.end(), std::ostream_iterator<int>(std::cout, " "));
+
+    // 测试用例 2
+    std::string s2 = "abab";
+    std::string p2 = "ab";
+    std::vector<int> res2 = solution.findAnagrams(s2, p2);
+    std::cout << "示例 2 输出: ";
+    std::copy(res2.begin(), res2.end(), std::ostream_iterator<int>(std::cout, " "));
+    copy(res2.begin(), res2.end(), ostream_iterator<int>(cout, ""));
+    return 0;
 }
